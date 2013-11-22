@@ -357,8 +357,8 @@ def ljdump(Server, Username, Password, Journal):
         print "%d errors" % errors
 
 if __name__ == "__main__":
-    if os.access("ljdump.config", os.F_OK):
-        config = xml.dom.minidom.parse("ljdump.config")
+    if len(sys.argv)==2 and sys.argv[1]!=None and os.access(sys.argv[1], os.F_OK):
+        config = xml.dom.minidom.parse(sys.argv[1])
         server = config.documentElement.getElementsByTagName("server")[0].childNodes[0].data
         username = config.documentElement.getElementsByTagName("username")[0].childNodes[0].data
         password = config.documentElement.getElementsByTagName("password")[0].childNodes[0].data
